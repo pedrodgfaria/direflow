@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { exec } = require('child_process');
+const isWin = process.platform === "win32";
 
 build('.');
 
@@ -26,7 +27,11 @@ function build(dir) {
     }
 
     if (dir === 'packages/direflow-component') {
-      exec(`mv ${dir}/dist/config/config-overrides.js ${dir}/config-overrides.js`, (err) => {
+      let mv = isWin ? `move` : `mv`;
+      let path = `${dir}/dist/config/config-overrides.js ${dir}/config-overrides.js`;
+      path = isWin ? path.replace(new RegExp('/', 'g'), '\\') : path;
+
+      exec(`${mv} ${path}`, (err) => {
         if (err) {
           console.log(`✗ failed to move config-overrides.js`);
           console.log(err);
