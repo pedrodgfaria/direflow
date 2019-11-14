@@ -6,7 +6,7 @@
   "author": "Silind Software",
   "license": "MIT",
   "scripts": {
-    "build": "node_modules/typescript/bin/tsc"
+    "build": "tsc"
   },
   "bin": "scripts/cli.js",
   "files": [
