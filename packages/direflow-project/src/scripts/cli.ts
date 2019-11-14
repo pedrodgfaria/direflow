@@ -37,7 +37,9 @@ async function start(): Promise<void> {
   const devServer = spawn('webpack-dev-server', [
     '--config',
     './node_modules/direflow-project/config/config.development.js',
-  ]);
+  ], {
+    stdio: 'inherit',
+  });
 
   if (process.argv[3] === '--show-output') {
     devServer.stdout.pipe(process.stdout);
@@ -76,7 +78,9 @@ async function build(): Promise<void> {
   const buildProcess = spawn('webpack', [
     '--config',
     './node_modules/direflow-project/config/config.production.js',
-  ]);
+  ], {
+    stdio: 'inherit',
+  });
 
   console.log('');
   console.log(chalk.blueBright('Creating production build ...'));
