@@ -5,7 +5,7 @@ const isWin = process.platform === "win32";
 const exec = function (command, callback) {
   command = isWin ? command.replace(new RegExp('/', 'g'), '\\') : command;
   command = isWin ? command.replace(new RegExp('rm -rf', 'g'), 'rd /s /q') : command;
-  command = isWin ? command.replace(new RegExp('rm', 'g'), 'rd /s /q') : command;
+  command = isWin ? command.replace(new RegExp('rm', 'g'), 'del /s /q') : command;
   crossExec(command, callback);
 };
 
