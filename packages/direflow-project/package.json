@@ -20,6 +20,8 @@
   "dependencies": {
     "awesome-typescript-loader": "5.2.1",
     "chalk": "2.4.2",
+    "cross-spawn": "^7.0.1",
+    "direflow-project": "^1.0.17",
     "es6-promise-promise": "1.0.0",
     "html-webpack-plugin": "3.2.0",
     "terser-webpack-plugin": "1.4.1",
@@ -29,6 +31,7 @@
     "webpack-merge": "4.2.1"
   },
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.1",
     "typescript": "3.7.2"
   }
 }

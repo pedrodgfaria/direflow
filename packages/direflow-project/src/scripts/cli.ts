@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import chalk from 'chalk';
-import { spawn } from 'child_process';
+import { spawn } from 'cross-spawn';
 import { buildAllComponents } from './builds';
 import { installAllComponents } from './installs';
 import { testAllComponents } from './tests';
@@ -34,7 +34,7 @@ async function start(): Promise<void> {
 
   await buildAll();
 
-  const devServer = spawn('webpack-dev-server', [
+  const devServer = spawn('node_modules/webpack-dev-server/bin/webpack-dev-server', [
     '--config',
     './node_modules/direflow-project/config/config.development.js',
   ], {
@@ -75,7 +75,7 @@ async function start(): Promise<void> {
 async function build(): Promise<void> {
   await buildAll();
 
-  const buildProcess = spawn('webpack', [
+  const buildProcess = spawn('node_modules/webpack/bin/webpack', [
     '--config',
     './node_modules/direflow-project/config/config.production.js',
   ], {
